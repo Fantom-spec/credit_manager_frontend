@@ -5,7 +5,7 @@
 const API_BASE =
   window.location.hostname === "localhost"
     ? "http://127.0.0.1:5000"
-    : "https://your-backend-name.onrender.com"; // <-- CHANGE THIS
+    : "https://credit-manager-backend.onrender.com"; // <-- CHANGE THIS
 
 let latestAmount = 0;
 
