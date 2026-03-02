@@ -179,7 +179,7 @@ function goHome() {
 
 function redeemCredits() {
   const used = parseFloat(document.getElementById('credits-used').value);
-  const meal = document.getElementById('meal-type').value;
+  const meal = document.getElementById('meal_type').value;
 
   if (!used || used <= 0) return;
 
@@ -207,7 +207,7 @@ function redeemCredits() {
   });
 
   document.getElementById('credits-used').value = '';
-  document.getElementById('meal-type').value = '';
+  document.getElementById('meal_type').value = '';
 }
 
 
