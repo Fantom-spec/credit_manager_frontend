@@ -9,7 +9,15 @@ const API_BASE =
 
 let latestAmount = 0;
 
+function switchTab(tab) {
+  // Update tab buttons
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
 
+  // Update pages
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+}
 // ==========================
 // TOAST
 // ==========================

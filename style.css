@@ -81,7 +81,12 @@
       margin-top: 6px;
       letter-spacing: 0.04em;
     }
-
+.page {
+  display: none;
+}
+.page.active {
+  display: block;
+}
     /* Tab switcher */
     .tabs {
       display: grid;
