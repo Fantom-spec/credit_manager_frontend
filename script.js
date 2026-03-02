@@ -179,6 +179,7 @@ function goHome() {
 
 function redeemCredits() {
   const used = parseFloat(document.getElementById('credits-used').value);
+  const meal = document.getElementById('meal-type').value;
 
   if (!used || used <= 0) return;
 
@@ -188,7 +189,8 @@ function redeemCredits() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      credits_used: used
+      credits_used: used,
+      meal_time: meal
     })
   })
   .then(res => {
@@ -205,6 +207,7 @@ function redeemCredits() {
   });
 
   document.getElementById('credits-used').value = '';
+  document.getElementById('meal-type').value = '';
 }
 
 

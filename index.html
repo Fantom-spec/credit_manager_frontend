@@ -75,6 +75,18 @@
         <input type="number" id="credits-used" placeholder="e.g. 200" min="0"/>
       </div>
 
+      <!-- ✅ NEW: Meal Type Dropdown -->
+      <div class="input-group">
+        <label>Meal Type</label>
+        <select id="meal-type">
+          <option value="" disabled selected>Select a meal...</option>
+          <option value="breakfast">🌅 Breakfast</option>
+          <option value="lunch">☀️ Lunch</option>
+          <option value="snacks">🍿 Snacks</option>
+          <option value="dinner">🌙 Dinner</option>
+        </select>
+      </div>
+
       <button class="btn btn-primary" style="background:var(--accent2)" onclick="redeemCredits()">Update</button>
     </div>
 
