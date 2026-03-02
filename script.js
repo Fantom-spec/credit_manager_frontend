@@ -180,6 +180,7 @@ function goHome() {
 function redeemCredits() {
   const used = parseFloat(document.getElementById('credits-used').value);
   const meal = document.getElementById('meal-type').value;
+  const date = document.getElementById('redeem-date').value;
 
   if (!used || used <= 0) return;
 
@@ -190,7 +191,8 @@ function redeemCredits() {
     },
     body: JSON.stringify({
       credits_used: used,
-      meal_time: meal
+      meal_time: meal,
+      date_used: date
     })
   })
   .then(res => {
