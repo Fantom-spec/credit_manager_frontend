@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Credits Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <span class="logo-dot"></span>
+      <h1>Credits Manager</h1>
+    </div>
+    <p>MANAGE · SELL · REDEEM</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('sell')">⬆ Sell Credits</button>
+    <button class="tab-btn" onclick="switchTab('use')">⬇ Use Credits</button>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- ====== SELL CREDITS PAGE ====== -->
+    <div class="page active" id="page-sell">
+      <div class="section-title">
+        Sell Credits
+        <span class="pill">SELL</span>
+      </div>
+
+      <div class="input-group">
+        <label>Credits Sold</label>
+        <input type="number" id="credits-sold" placeholder="e.g. 500" min="0"/>
+      </div>
+
+      <div class="input-group">
+        <label>Discount Amount (%)</label>
+        <input type="number" id="discount-amount" placeholder="e.g. 10" min="0" max="100"/>
+      </div>
+
+      <button class="btn btn-primary" onclick="calculate()">Calculate Amount</button>
+
+      <!-- Result box -->
+      <div class="result-box" id="result-box">
+        <span class="result-label">Calculated Amount</span>
+        <span class="result-value empty" id="result-value">—</span>
+      </div>
+
+      <hr class="divider"/>
+
+      <button class="btn btn-secondary" onclick="openPopup()">🔲 View QR Code</button>
+      <button class="btn btn-done" onclick="goHome()">Update</button>
+    </div>
+
+    <!-- ====== USE CREDITS PAGE ====== -->
+    <div class="page" id="page-use">
+      <div class="section-title">
+        Use Credits
+        <span class="pill" style="background:rgba(79,240,200,0.12);color:var(--accent2)">REDEEM</span>
+      </div>
+
+      <div class="info-strip">
+        Enter the number of credits you'd like to redeem.
+      </div>
+
+      <div class="input-group">
+        <label>Credits Used</label>
+        <input type="number" id="credits-used" placeholder="e.g. 200" min="0"/>
+      </div>
+
+      <button class="btn btn-primary" style="background:var(--accent2)" onclick="redeemCredits()">Update</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== TOAST ====== -->
+<div class="toast" id="toast">✓ Done</div>
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="popup-handle"></div>
+    <div class="popup-title">Scan QR Code</div>
+    <div class="popup-image">
+      <img id="qrcode"></div>
+      <span class="img-badge">SCAN TO PAY</span>
+      <button class="btn-popup-done" onclick="closePopup()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
