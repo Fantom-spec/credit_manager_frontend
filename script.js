@@ -233,38 +233,40 @@ function updateReport() {
   const resultBoxUsed = document.getElementById('result-box-used');
   const resultBoxSold = document.getElementById('result-box-sold');
   const resultBoxLeft = document.getElementById('result-box-left');
+
   const resultUsed = document.getElementById('result-used');
   const resultSold = document.getElementById('result-sold');
   const resultLeft = document.getElementById('result-left');
-  fetch(`${API_BASE}/report`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      button:"report_needed"
-    })
-  })
+
+  fetch(`${API_BASE}/report`)
   .then(res => {
-    if (!res.ok) throw new Error("Redeem failed");
+    if (!res.ok) throw new Error("Report fetch failed");
     return res.json();
   })
   .then(data => {
-    resultUsed.textContent = '₹' + data.used;
-    resultUsed.className = 'result-used';
-    resultBoxUsed.classList.add('has-value');
 
-    resultSold.textContent = '₹' + data.sold;
-    resultSold.className = 'result-sold';
-    resultBoxSold.classList.add('has-value');
+    if(data.error) throw new Error(data.error);
 
-    resultLeft.textContent = '₹' + data.left;
-    resultLeft.className = 'result-left';
-    resultBoxLeft.classList.add('has-value');
+    resultUsed.textContent = data.used;
+    resultUsed.classList.remove("empty");
+    resultBoxUsed.classList.add("has-value");
+
+    resultSold.textContent = data.sold;
+    resultSold.classList.remove("empty");
+    resultBoxSold.classList.add("has-value");
+
+    resultLeft.textContent = data.left;
+    resultLeft.classList.remove("empty");
+    resultBoxLeft.classList.add("has-value");
+
+    if(data.progress !== undefined){
+      setProgress(data.progress);
+    }
+
   })
   .catch(err => {
-    alert("failed");
     console.error(err);
+    alert("Failed to fetch report");
   });
 }
 
