@@ -23,6 +23,7 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sell')">⬆ Sell Credits</button>
     <button class="tab-btn" onclick="switchTab('use')">⬇ Use Credits</button>
+    <button class="tab-btn" onclick="switchTab('report')">📊 Report</button>
   </div>
 
   <!-- Card -->
@@ -75,7 +76,6 @@
         <input type="number" id="credits-used" placeholder="e.g. 200" min="0"/>
       </div>
 
-      <!-- ✅ NEW: Meal Type Dropdown -->
       <div class="input-group">
         <label>Meal Type</label>
         <select id="meal_type">
@@ -86,8 +86,52 @@
           <option value="dinner">🌙 Dinner</option>
         </select>
       </div>
+
       <div class="input-group">
-      <button class="btn btn-primary" style="background:var(--accent2)" onclick="redeemCredits()">Update</button>
+        <button class="btn btn-primary" style="background:var(--accent2);color:#0d0d12" onclick="redeemCredits()">Update</button>
+      </div>
+    </div>
+
+    <!-- ====== REPORT PAGE ====== -->
+    <div class="page" id="page-report">
+      <div class="section-title">
+        Credits Report
+        <span class="pill" style="background:rgba(248,94,123,0.12);color:var(--accent3)">REPORT</span>
+      </div>
+
+      <div class="report-stats">
+
+        <div class="result-box" id="result-box-used">
+        <span class="result-label">Credits Used</span>
+        <span class="result-value empty" id="result-used">—</span>
+      </div>
+
+      <div class="result-box" id="result-box-sold">
+        <span class="result-label">Credits Sold</span>
+        <span class="result-value empty" id="result-sold">—</span>
+      </div>
+
+      <div class="result-box" id="result-box-left">
+        <span class="result-label">Credits Left</span>
+        <span class="result-value empty" id="result-left">—</span>
+      </div>
+      
+      <div class="input-group">
+        <label>Progress Bar</label>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 40%;"></div>
+        </div>
+        <div class="progress-text">—</div>
+      </div>
+
+      <div class="input-group">
+        <button class="btn btn-primary"  onclick="updateReport()">Update</button>
+      </div>
+
+      </div>
     </div>
 
   </div>
@@ -95,15 +139,17 @@
 
 <!-- ====== TOAST ====== -->
 <div class="toast" id="toast">✓ Done</div>
+
+<!-- ====== QR POPUP ====== -->
 <div class="popup-overlay" id="popup">
   <div class="popup-box">
     <div class="popup-handle"></div>
     <div class="popup-title">Scan QR Code</div>
     <div class="popup-image">
-      <img id="qrcode"></div>
-      <span class="img-badge">SCAN TO PAY</span>
-      <button class="btn-popup-done" onclick="closePopup()">Done</button>
+      <img id="qrcode" src="" alt="QR Code"/>
     </div>
+    <span class="img-badge">SCAN TO PAY</span>
+    <button class="btn-popup-done" onclick="closePopup()">Done</button>
   </div>
 </div>
 
