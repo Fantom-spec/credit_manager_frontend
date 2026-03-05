@@ -17,6 +17,10 @@ function switchTab(tab) {
   // Update pages
   document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
   document.getElementById('page-' + tab).classList.add('active');
+  
+  if(tab==="report"){
+    updateReport();
+  }
 }
 // ==========================
 // TOAST
